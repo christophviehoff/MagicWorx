@@ -1,3 +1,5 @@
+
+
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'relays.ui'
@@ -11,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Controller(object):
     def setupUi(self, Controller):
         Controller.setObjectName("Controller")
-        Controller.resize(596, 699)
+        Controller.resize(1237, 929)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
@@ -138,7 +140,7 @@ class Ui_Controller(object):
         self.pb_relay_all_off.setAutoExclusive(True)
         self.pb_relay_all_off.setObjectName("pb_relay_all_off")
         self.TB6600 = QtWidgets.QGroupBox(Controller)
-        self.TB6600.setGeometry(QtCore.QRect(10, 370, 571, 121))
+        self.TB6600.setGeometry(QtCore.QRect(590, 10, 571, 121))
         self.TB6600.setObjectName("TB6600")
         self.pb_tb6600_test = QtWidgets.QPushButton(self.TB6600)
         self.pb_tb6600_test.setGeometry(QtCore.QRect(10, 30, 75, 75))
@@ -169,8 +171,15 @@ class Ui_Controller(object):
         self.lcd_tb6600_steps = QtWidgets.QLCDNumber(self.TB6600)
         self.lcd_tb6600_steps.setGeometry(QtCore.QRect(410, 70, 64, 31))
         self.lcd_tb6600_steps.setObjectName("lcd_tb6600_steps")
+        self.pb_tb6600_MCR = QtWidgets.QPushButton(self.TB6600)
+        self.pb_tb6600_MCR.setGeometry(QtCore.QRect(90, 30, 75, 75))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.pb_tb6600_MCR.setFont(font)
+        self.pb_tb6600_MCR.setCheckable(True)
+        self.pb_tb6600_MCR.setObjectName("pb_tb6600_MCR")
         self.I2CSensors = QtWidgets.QGroupBox(Controller)
-        self.I2CSensors.setGeometry(QtCore.QRect(10, 510, 571, 80))
+        self.I2CSensors.setGeometry(QtCore.QRect(590, 140, 571, 80))
         self.I2CSensors.setObjectName("I2CSensors")
         self.led_0 = QtWidgets.QPushButton(self.I2CSensors)
         self.led_0.setEnabled(True)
@@ -191,7 +200,7 @@ class Ui_Controller(object):
         self.lcd_0.setObjectName("lcd_0")
         self.heartbeat = QtWidgets.QPushButton(Controller)
         self.heartbeat.setEnabled(False)
-        self.heartbeat.setGeometry(QtCore.QRect(560, 670, 10, 10))
+        self.heartbeat.setGeometry(QtCore.QRect(1210, 860, 10, 10))
         self.heartbeat.setAutoFillBackground(False)
         self.heartbeat.setStyleSheet("\n"
 "#heartbeat {\n"
@@ -209,6 +218,668 @@ class Ui_Controller(object):
         self.heartbeat.setChecked(False)
         self.heartbeat.setFlat(False)
         self.heartbeat.setObjectName("heartbeat")
+        self.ConveyorSequence = QtWidgets.QGroupBox(Controller)
+        self.ConveyorSequence.setGeometry(QtCore.QRect(10, 360, 571, 141))
+        self.ConveyorSequence.setObjectName("ConveyorSequence")
+        self.pb_conv_stop = QtWidgets.QPushButton(self.ConveyorSequence)
+        self.pb_conv_stop.setGeometry(QtCore.QRect(190, 40, 75, 75))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.pb_conv_stop.setFont(font)
+        self.pb_conv_stop.setCheckable(True)
+        self.pb_conv_stop.setObjectName("pb_conv_stop")
+        self.pb_conv_start = QtWidgets.QPushButton(self.ConveyorSequence)
+        self.pb_conv_start.setGeometry(QtCore.QRect(110, 40, 75, 75))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.pb_conv_start.setFont(font)
+        self.pb_conv_start.setCheckable(True)
+        self.pb_conv_start.setObjectName("pb_conv_start")
+        self.pb_conv_shutdown = QtWidgets.QPushButton(self.ConveyorSequence)
+        self.pb_conv_shutdown.setGeometry(QtCore.QRect(480, 40, 75, 75))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.pb_conv_shutdown.setFont(font)
+        self.pb_conv_shutdown.setCheckable(True)
+        self.pb_conv_shutdown.setObjectName("pb_conv_shutdown")
+        self.lbl_state = QtWidgets.QLabel(self.ConveyorSequence)
+        self.lbl_state.setGeometry(QtCore.QRect(300, 70, 151, 41))
+        font = QtGui.QFont()
+        font.setFamily("Liberation Sans")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_state.setFont(font)
+        self.lbl_state.setObjectName("lbl_state")
+        self.pb_conv_enable = QtWidgets.QPushButton(self.ConveyorSequence)
+        self.pb_conv_enable.setEnabled(True)
+        self.pb_conv_enable.setGeometry(QtCore.QRect(10, 40, 75, 75))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.pb_conv_enable.setFont(font)
+        self.pb_conv_enable.setCheckable(True)
+        self.pb_conv_enable.setObjectName("pb_conv_enable")
+        self.led_1 = QtWidgets.QPushButton(self.ConveyorSequence)
+        self.led_1.setEnabled(True)
+        self.led_1.setGeometry(QtCore.QRect(300, 30, 25, 25))
+        self.led_1.setStyleSheet("#led_1{\n"
+"border-radius:12px}\n"
+"\n"
+"#led_1:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#led_1:!enabled{\n"
+"background :red}")
+        self.led_1.setText("")
+        self.led_1.setObjectName("led_1")
+        self.lcd_1 = QtWidgets.QLCDNumber(self.ConveyorSequence)
+        self.lcd_1.setGeometry(QtCore.QRect(350, 30, 64, 23))
+        self.lcd_1.setObjectName("lcd_1")
+        self.trackingBox = QtWidgets.QGroupBox(Controller)
+        self.trackingBox.setGeometry(QtCore.QRect(10, 520, 831, 201))
+        self.trackingBox.setObjectName("trackingBox")
+        self.pos_0 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_0.setEnabled(True)
+        self.pos_0.setGeometry(QtCore.QRect(10, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_0.setFont(font)
+        self.pos_0.setStyleSheet("#pos_0{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_0:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_0:!enabled{\n"
+"background :red}")
+        self.pos_0.setObjectName("pos_0")
+        self.pos_1 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_1.setEnabled(True)
+        self.pos_1.setGeometry(QtCore.QRect(40, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_1.setFont(font)
+        self.pos_1.setStyleSheet("#pos_1{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_1:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_1:!enabled{\n"
+"background :red}")
+        self.pos_1.setObjectName("pos_1")
+        self.pos_2 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_2.setEnabled(True)
+        self.pos_2.setGeometry(QtCore.QRect(70, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_2.setFont(font)
+        self.pos_2.setStyleSheet("#pos_2{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_2:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_2:!enabled{\n"
+"background :red}")
+        self.pos_2.setObjectName("pos_2")
+        self.pos_3 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_3.setEnabled(True)
+        self.pos_3.setGeometry(QtCore.QRect(100, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_3.setFont(font)
+        self.pos_3.setStyleSheet("#pos_3{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_3:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_3:!enabled{\n"
+"background :red}")
+        self.pos_3.setObjectName("pos_3")
+        self.pos_4 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_4.setEnabled(True)
+        self.pos_4.setGeometry(QtCore.QRect(130, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_4.setFont(font)
+        self.pos_4.setStyleSheet("#pos_4{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_4:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_4:!enabled{\n"
+"background :red}")
+        self.pos_4.setObjectName("pos_4")
+        self.pos_5 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_5.setEnabled(True)
+        self.pos_5.setGeometry(QtCore.QRect(160, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_5.setFont(font)
+        self.pos_5.setStyleSheet("#pos_5{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_5:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_5:!enabled{\n"
+"background :red}")
+        self.pos_5.setObjectName("pos_5")
+        self.pos_6 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_6.setEnabled(True)
+        self.pos_6.setGeometry(QtCore.QRect(190, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_6.setFont(font)
+        self.pos_6.setStyleSheet("#pos_6{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_6:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_6:!enabled{\n"
+"background :red}")
+        self.pos_6.setObjectName("pos_6")
+        self.pos_7 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_7.setEnabled(True)
+        self.pos_7.setGeometry(QtCore.QRect(220, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_7.setFont(font)
+        self.pos_7.setStyleSheet("#pos_7{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_7:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_7:!enabled{\n"
+"background :red}")
+        self.pos_7.setObjectName("pos_7")
+        self.pos_8 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_8.setEnabled(True)
+        self.pos_8.setGeometry(QtCore.QRect(250, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_8.setFont(font)
+        self.pos_8.setStyleSheet("#pos_8{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_8:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_8:!enabled{\n"
+"background :red}")
+        self.pos_8.setObjectName("pos_8")
+        self.pos_9 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_9.setEnabled(True)
+        self.pos_9.setGeometry(QtCore.QRect(280, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_9.setFont(font)
+        self.pos_9.setStyleSheet("#pos_9{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_9:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_9:!enabled{\n"
+"background :red}")
+        self.pos_9.setObjectName("pos_9")
+        self.pos_10 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_10.setEnabled(True)
+        self.pos_10.setGeometry(QtCore.QRect(310, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_10.setFont(font)
+        self.pos_10.setStyleSheet("#pos_10{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_10:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_10:!enabled{\n"
+"background :red}")
+        self.pos_10.setObjectName("pos_10")
+        self.pos_11 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_11.setEnabled(True)
+        self.pos_11.setGeometry(QtCore.QRect(340, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_11.setFont(font)
+        self.pos_11.setStyleSheet("#pos_11{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_11:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_11:!enabled{\n"
+"background :red}")
+        self.pos_11.setObjectName("pos_11")
+        self.pos_12 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_12.setEnabled(True)
+        self.pos_12.setGeometry(QtCore.QRect(370, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_12.setFont(font)
+        self.pos_12.setStyleSheet("#pos_12{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_12:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_12:!enabled{\n"
+"background :red}")
+        self.pos_12.setObjectName("pos_12")
+        self.pos_13 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_13.setEnabled(True)
+        self.pos_13.setGeometry(QtCore.QRect(400, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_13.setFont(font)
+        self.pos_13.setStyleSheet("#pos_13{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_13:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_13:!enabled{\n"
+"background :red}")
+        self.pos_13.setObjectName("pos_13")
+        self.pos_14 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_14.setEnabled(True)
+        self.pos_14.setGeometry(QtCore.QRect(430, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_14.setFont(font)
+        self.pos_14.setStyleSheet("#pos_14{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_14:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_14:!enabled{\n"
+"background :red}")
+        self.pos_14.setObjectName("pos_14")
+        self.pos_15 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_15.setEnabled(True)
+        self.pos_15.setGeometry(QtCore.QRect(460, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_15.setFont(font)
+        self.pos_15.setStyleSheet("#pos_15{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_15:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_15:!enabled{\n"
+"background :red}")
+        self.pos_15.setObjectName("pos_15")
+        self.pos_16 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_16.setEnabled(True)
+        self.pos_16.setGeometry(QtCore.QRect(490, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_16.setFont(font)
+        self.pos_16.setStyleSheet("#pos_16{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_16:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_16:!enabled{\n"
+"background :red}")
+        self.pos_16.setObjectName("pos_16")
+        self.pos_17 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_17.setEnabled(True)
+        self.pos_17.setGeometry(QtCore.QRect(520, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_17.setFont(font)
+        self.pos_17.setStyleSheet("#pos_17{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_17:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_17:!enabled{\n"
+"background :red}")
+        self.pos_17.setObjectName("pos_17")
+        self.pos_18 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_18.setEnabled(True)
+        self.pos_18.setGeometry(QtCore.QRect(550, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_18.setFont(font)
+        self.pos_18.setStyleSheet("#pos_18{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_18:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_18:!enabled{\n"
+"background :red}")
+        self.pos_18.setObjectName("pos_18")
+        self.pos_19 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_19.setEnabled(True)
+        self.pos_19.setGeometry(QtCore.QRect(580, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_19.setFont(font)
+        self.pos_19.setStyleSheet("#pos_19{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_19:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_19:!enabled{\n"
+"background :red}")
+        self.pos_19.setObjectName("pos_19")
+        self.pos_20 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_20.setEnabled(True)
+        self.pos_20.setGeometry(QtCore.QRect(610, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_20.setFont(font)
+        self.pos_20.setStyleSheet("#pos_20{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_20:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_20:!enabled{\n"
+"background :red}")
+        self.pos_20.setObjectName("pos_20")
+        self.pos_21 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_21.setEnabled(True)
+        self.pos_21.setGeometry(QtCore.QRect(640, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_21.setFont(font)
+        self.pos_21.setStyleSheet("#pos_21{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_21:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_21:!enabled{\n"
+"background :red}")
+        self.pos_21.setObjectName("pos_21")
+        self.pos_22 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_22.setEnabled(True)
+        self.pos_22.setGeometry(QtCore.QRect(670, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_22.setFont(font)
+        self.pos_22.setStyleSheet("#pos_22{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_22:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_22:!enabled{\n"
+"background :red}")
+        self.pos_22.setObjectName("pos_22")
+        self.pos_23 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_23.setEnabled(True)
+        self.pos_23.setGeometry(QtCore.QRect(700, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_23.setFont(font)
+        self.pos_23.setStyleSheet("#pos_23{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_23:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_23:!enabled{\n"
+"background :red}")
+        self.pos_23.setObjectName("pos_23")
+        self.pos_24 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_24.setEnabled(True)
+        self.pos_24.setGeometry(QtCore.QRect(730, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_24.setFont(font)
+        self.pos_24.setStyleSheet("#pos_24{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_24:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_24:!enabled{\n"
+"background :red}")
+        self.pos_24.setObjectName("pos_24")
+        self.pos_26 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_26.setEnabled(True)
+        self.pos_26.setGeometry(QtCore.QRect(790, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_26.setFont(font)
+        self.pos_26.setStyleSheet("#pos_26{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_26:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_26:!enabled{\n"
+"background :red}")
+        self.pos_26.setObjectName("pos_26")
+        self.label_2 = QtWidgets.QLabel(self.trackingBox)
+        self.label_2.setGeometry(QtCore.QRect(440, 200, 21, 16))
+        self.label_2.setObjectName("label_2")
+        self.label = QtWidgets.QLabel(self.trackingBox)
+        self.label.setGeometry(QtCore.QRect(400, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.label_3 = QtWidgets.QLabel(self.trackingBox)
+        self.label_3.setGeometry(QtCore.QRect(430, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.trackingBox)
+        self.label_4.setGeometry(QtCore.QRect(460, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(self.trackingBox)
+        self.label_5.setGeometry(QtCore.QRect(490, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.label_6 = QtWidgets.QLabel(self.trackingBox)
+        self.label_6.setGeometry(QtCore.QRect(520, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName("label_6")
+        self.label_7 = QtWidgets.QLabel(self.trackingBox)
+        self.label_7.setGeometry(QtCore.QRect(550, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
+        self.label_8 = QtWidgets.QLabel(self.trackingBox)
+        self.label_8.setGeometry(QtCore.QRect(610, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_8.setFont(font)
+        self.label_8.setObjectName("label_8")
+        self.label_9 = QtWidgets.QLabel(self.trackingBox)
+        self.label_9.setGeometry(QtCore.QRect(640, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_9.setFont(font)
+        self.label_9.setObjectName("label_9")
+        self.label_10 = QtWidgets.QLabel(self.trackingBox)
+        self.label_10.setGeometry(QtCore.QRect(670, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_10.setFont(font)
+        self.label_10.setObjectName("label_10")
+        self.label_11 = QtWidgets.QLabel(self.trackingBox)
+        self.label_11.setGeometry(QtCore.QRect(700, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_11.setFont(font)
+        self.label_11.setObjectName("label_11")
+        self.label_12 = QtWidgets.QLabel(self.trackingBox)
+        self.label_12.setGeometry(QtCore.QRect(730, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_12.setFont(font)
+        self.label_12.setObjectName("label_12")
+        self.label_13 = QtWidgets.QLabel(self.trackingBox)
+        self.label_13.setGeometry(QtCore.QRect(760, 30, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_13.setFont(font)
+        self.label_13.setObjectName("label_13")
+        self.label_14 = QtWidgets.QLabel(self.trackingBox)
+        self.label_14.setGeometry(QtCore.QRect(400, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_14.setFont(font)
+        self.label_14.setObjectName("label_14")
+        self.label_15 = QtWidgets.QLabel(self.trackingBox)
+        self.label_15.setGeometry(QtCore.QRect(430, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_15.setFont(font)
+        self.label_15.setObjectName("label_15")
+        self.label_16 = QtWidgets.QLabel(self.trackingBox)
+        self.label_16.setGeometry(QtCore.QRect(460, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_16.setFont(font)
+        self.label_16.setObjectName("label_16")
+        self.label_17 = QtWidgets.QLabel(self.trackingBox)
+        self.label_17.setGeometry(QtCore.QRect(490, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_17.setFont(font)
+        self.label_17.setObjectName("label_17")
+        self.label_18 = QtWidgets.QLabel(self.trackingBox)
+        self.label_18.setGeometry(QtCore.QRect(520, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_18.setFont(font)
+        self.label_18.setObjectName("label_18")
+        self.label_19 = QtWidgets.QLabel(self.trackingBox)
+        self.label_19.setGeometry(QtCore.QRect(550, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_19.setFont(font)
+        self.label_19.setObjectName("label_19")
+        self.label_20 = QtWidgets.QLabel(self.trackingBox)
+        self.label_20.setGeometry(QtCore.QRect(610, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_20.setFont(font)
+        self.label_20.setObjectName("label_20")
+        self.label_21 = QtWidgets.QLabel(self.trackingBox)
+        self.label_21.setGeometry(QtCore.QRect(640, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_21.setFont(font)
+        self.label_21.setObjectName("label_21")
+        self.label_22 = QtWidgets.QLabel(self.trackingBox)
+        self.label_22.setGeometry(QtCore.QRect(670, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_22.setFont(font)
+        self.label_22.setObjectName("label_22")
+        self.label_23 = QtWidgets.QLabel(self.trackingBox)
+        self.label_23.setGeometry(QtCore.QRect(700, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_23.setFont(font)
+        self.label_23.setObjectName("label_23")
+        self.label_24 = QtWidgets.QLabel(self.trackingBox)
+        self.label_24.setGeometry(QtCore.QRect(730, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_24.setFont(font)
+        self.label_24.setObjectName("label_24")
+        self.label_25 = QtWidgets.QLabel(self.trackingBox)
+        self.label_25.setGeometry(QtCore.QRect(760, 160, 25, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.label_25.setFont(font)
+        self.label_25.setObjectName("label_25")
+        self.label_26 = QtWidgets.QLabel(self.trackingBox)
+        self.label_26.setGeometry(QtCore.QRect(10, 30, 291, 20))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_26.setFont(font)
+        self.label_26.setObjectName("label_26")
+        self.label_27 = QtWidgets.QLabel(self.trackingBox)
+        self.label_27.setGeometry(QtCore.QRect(340, 30, 25, 13))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_27.setFont(font)
+        self.label_27.setObjectName("label_27")
+        self.label_28 = QtWidgets.QLabel(self.trackingBox)
+        self.label_28.setGeometry(QtCore.QRect(790, 30, 25, 13))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_28.setFont(font)
+        self.label_28.setObjectName("label_28")
+        self.pos_25 = QtWidgets.QPushButton(self.trackingBox)
+        self.pos_25.setEnabled(True)
+        self.pos_25.setGeometry(QtCore.QRect(760, 60, 25, 91))
+        font = QtGui.QFont()
+        font.setFamily("Bitstream Charter")
+        self.pos_25.setFont(font)
+        self.pos_25.setStyleSheet("#pos_25{\n"
+"border-radius:1px}\n"
+"\n"
+"#pos_25:enabled{\n"
+"background :green}\n"
+"\n"
+"\n"
+"#pos_25:!enabled{\n"
+"background :red}")
+        self.pos_25.setObjectName("pos_25")
 
         self.retranslateUi(Controller)
         self.bar_tb6600_steps.valueChanged['int'].connect(self.lcd_tb6600_steps.display)
@@ -239,7 +910,98 @@ class Ui_Controller(object):
         self.pb_tb6600_test.setText(_translate("Controller", "Test"))
         self.pb_tb6600_move_cw.setText(_translate("Controller", "CW"))
         self.pb_tb6600_move_ccw.setText(_translate("Controller", "CCW"))
+        self.pb_tb6600_MCR.setText(_translate("Controller", "MCR"))
         self.I2CSensors.setTitle(_translate("Controller", "i2c sensors"))
         self.led_0.setToolTip(_translate("Controller", "input green =on, red=off"))
         self.heartbeat.setToolTip(_translate("Controller", "heartbeat"))
+        self.ConveyorSequence.setTitle(_translate("Controller", "Conveyor sequence"))
+        self.pb_conv_stop.setText(_translate("Controller", "Stop"))
+        self.pb_conv_start.setText(_translate("Controller", "Start"))
+        self.pb_conv_shutdown.setText(_translate("Controller", "Shutdown"))
+        self.lbl_state.setText(_translate("Controller", "TextLabel"))
+        self.pb_conv_enable.setText(_translate("Controller", "Enable"))
+        self.led_1.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.trackingBox.setTitle(_translate("Controller", "Tracking"))
+        self.pos_0.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_0.setText(_translate("Controller", "0"))
+        self.pos_1.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_1.setText(_translate("Controller", "1"))
+        self.pos_2.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_2.setText(_translate("Controller", "2"))
+        self.pos_3.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_3.setText(_translate("Controller", "3"))
+        self.pos_4.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_4.setText(_translate("Controller", "4"))
+        self.pos_5.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_5.setText(_translate("Controller", "5"))
+        self.pos_6.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_6.setText(_translate("Controller", "6"))
+        self.pos_7.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_7.setText(_translate("Controller", "7"))
+        self.pos_8.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_8.setText(_translate("Controller", "8"))
+        self.pos_9.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_9.setText(_translate("Controller", "9"))
+        self.pos_10.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_10.setText(_translate("Controller", "10"))
+        self.pos_11.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_11.setText(_translate("Controller", "11"))
+        self.pos_12.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_12.setText(_translate("Controller", "12"))
+        self.pos_13.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_13.setText(_translate("Controller", "13"))
+        self.pos_14.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_14.setText(_translate("Controller", "14"))
+        self.pos_15.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_15.setText(_translate("Controller", "15"))
+        self.pos_16.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_16.setText(_translate("Controller", "16"))
+        self.pos_17.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_17.setText(_translate("Controller", "17"))
+        self.pos_18.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_18.setText(_translate("Controller", "18"))
+        self.pos_19.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_19.setText(_translate("Controller", "19"))
+        self.pos_20.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_20.setText(_translate("Controller", "20"))
+        self.pos_21.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_21.setText(_translate("Controller", "21"))
+        self.pos_22.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_22.setText(_translate("Controller", "22"))
+        self.pos_23.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_23.setText(_translate("Controller", "23"))
+        self.pos_24.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_24.setText(_translate("Controller", "24"))
+        self.pos_26.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_26.setText(_translate("Controller", "26"))
+        self.label_2.setText(_translate("Controller", "13"))
+        self.label.setText(_translate("Controller", "Bin0"))
+        self.label_3.setText(_translate("Controller", "Bin2"))
+        self.label_4.setText(_translate("Controller", "Bin4"))
+        self.label_5.setText(_translate("Controller", "Bin6"))
+        self.label_6.setText(_translate("Controller", "Bin8"))
+        self.label_7.setText(_translate("Controller", "Bin10"))
+        self.label_8.setText(_translate("Controller", "Bin12"))
+        self.label_9.setText(_translate("Controller", "Bin14"))
+        self.label_10.setText(_translate("Controller", "Bin16"))
+        self.label_11.setText(_translate("Controller", "Bin18"))
+        self.label_12.setText(_translate("Controller", "Bin20"))
+        self.label_13.setText(_translate("Controller", "Bin22"))
+        self.label_14.setText(_translate("Controller", "Bin1"))
+        self.label_15.setText(_translate("Controller", "Bin3"))
+        self.label_16.setText(_translate("Controller", "Bin5"))
+        self.label_17.setText(_translate("Controller", "Bin7"))
+        self.label_18.setText(_translate("Controller", "Bin9"))
+        self.label_19.setText(_translate("Controller", "Bin11"))
+        self.label_20.setText(_translate("Controller", "Bin13"))
+        self.label_21.setText(_translate("Controller", "Bin15"))
+        self.label_22.setText(_translate("Controller", "Bin17"))
+        self.label_23.setText(_translate("Controller", "Bin19"))
+        self.label_24.setText(_translate("Controller", "Bin21"))
+        self.label_25.setText(_translate("Controller", "Bin23"))
+        self.label_26.setText(_translate("Controller", "Pick and Place ________________________________"))
+        self.label_27.setText(_translate("Controller", "Cam"))
+        self.label_28.setText(_translate("Controller", "END"))
+        self.pos_25.setToolTip(_translate("Controller", "input green =on, red=off"))
+        self.pos_25.setText(_translate("Controller", "24"))
 
