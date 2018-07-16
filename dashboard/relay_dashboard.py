@@ -10,6 +10,12 @@ from relays import Ui_Controller
 #QThread
 from PyQt5.QtCore import *
 
+#simple bin assignments
+# #TODOnot shared with dashbiard yet
+sort_crit={ 13:("A","B"),14:("C","D"),15:("E","F"),16:("G","H"),17:("I","J"),18:("K","L"),19:("*","*"),20:("M","N"),
+            21:("O","P"),22:("Q","R"),23:("S","T"),24:("U","V"),25:("W","X")
+           }
+
 class WorkerSignals(QObject):
     '''
     Defines the signals available from a running worker thread.
@@ -112,6 +118,7 @@ if __name__ == "__main__":
             self.counter=0
             self.cnt0 = 0
             self.cnt1 = 0
+            self.bin1_cnt=0
             # register 0 to 1 'rising edge'  edge detector callback
             self.detector_pin_0 = EdgeTrigger(self.cb_i2c_pin_0)
             self.detector_bb = EdgeTrigger(self.cb_break_beam)
@@ -512,6 +519,7 @@ if __name__ == "__main__":
         # Step 3b : update QT lcd led displays
         def io_polling(self):
 
+
             url = 'http://PiPlates-1.local:5000/api/v1/i2c/0'
             r = requests.get(url)
             response = r.json()
@@ -539,142 +547,181 @@ if __name__ == "__main__":
             url = 'http://PiPlates-1.local:5000/api/v1/conv'
             r = requests.get(url)
             response = r.json()
+
             self.lcd_1.display(response["count"])
             self.lbl_state.setText(response["state"])
 
             # update queue tracking positions
 
-            if response["queue"][0] == "card":
+            if response["queue"][0]["Name"] == "card":
                 self.pos_0.setEnabled(0)
             else:
                 self.pos_0.setEnabled(1)
 
-            if response["queue"][1]== "card":
+            if response["queue"][1]["Name"] == "card":
                 self.pos_1.setEnabled(0)
             else:
                 self.pos_1.setEnabled(1)
 
-            if response["queue"][2] == "card":
+            if response["queue"][2]["Name"] == "card":
                 self.pos_2.setEnabled(0)
             else:
                 self.pos_2.setEnabled(1)
 
-            if response["queue"][3] == "card":
+            if response["queue"][3]["Name"] == "card":
                 self.pos_3.setEnabled(0)
             else:
                 self.pos_3.setEnabled(1)
 
-            if response["queue"][4] == "card":
+            if response["queue"][4]["Name"] == "card":
                 self.pos_4.setEnabled(0)
             else:
                 self.pos_4.setEnabled(1)
 
-            if response["queue"][5] == "card":
+            if response["queue"][5]["Name"] == "card":
                 self.pos_5.setEnabled(0)
             else:
                 self.pos_5.setEnabled(1)
 
-            if response["queue"][6] == "card":
+            if response["queue"][6]["Name"] == "card":
                 self.pos_6.setEnabled(0)
             else:
                 self.pos_6.setEnabled(1)
 
-            if response["queue"][7] == "card":
+            if response["queue"][7]["Name"] == "card":
                 self.pos_7.setEnabled(0)
             else:
                 self.pos_7.setEnabled(1)
 
-            if response["queue"][8] == "card":
+            if response["queue"][8]["Name"] == "card":
                 self.pos_8.setEnabled(0)
             else:
                 self.pos_8.setEnabled(1)
 
-            if response["queue"][9] == "card":
+            if response["queue"][9]["Name"] == "card":
                 self.pos_9.setEnabled(0)
             else:
                 self.pos_9.setEnabled(1)
 
-            if response["queue"][10] == "card":
+            if response["queue"][10]["Name"] == "card":
                 self.pos_10.setEnabled(0)
             else:
                 self.pos_10.setEnabled(1)
 
-            if response["queue"][11] == "card":
+
+            #Camera position
+
+
+            self.lbl_dest_11.setText(str(response["queue"][11]["Dest"]))
+
+            if response["queue"][11]["Name"] == "card":
                 self.pos_11.setEnabled(0)
             else:
                 self.pos_11.setEnabled(1)
 
-            if response["queue"][12] == "card":
+
+            #no action
+            self.lbl_dest_12.setText(str(response["queue"][12]["Dest"]))
+            if response["queue"][12]["Name"] == "card":
                 self.pos_12.setEnabled(0)
             else:
                 self.pos_12.setEnabled(1)
 
-            if response["queue"][13] == "card":
+            #Sorting bin locations
+            self.lbl_dest_13.setText(str(response["queue"][13]["Dest"]))
+            self.lbl_criteria_13.setText(''.join(sort_crit[13]))
+
+            if response["queue"][13]["Name"] == "card":
                 self.pos_13.setEnabled(0)
             else:
                 self.pos_13.setEnabled(1)
 
-            if response["queue"][14] == "card":
+            self.lbl_dest_14.setText(str(response["queue"][14]["Dest"]))
+            self.lbl_criteria_14.setText(''.join(sort_crit[14]))
+            if response["queue"][14]["Name"] == "card":
                 self.pos_14.setEnabled(0)
+
             else:
                 self.pos_14.setEnabled(1)
 
-            if response["queue"][15] == "card":
+            self.lbl_dest_15.setText(str(response["queue"][15]["Dest"]))
+            self.lbl_criteria_15.setText(''.join(sort_crit[15]))
+            if response["queue"][15]["Name"] == "card":
                 self.pos_15.setEnabled(0)
             else:
                 self.pos_15.setEnabled(1)
 
-            if response["queue"][16] == "card":
+            self.lbl_dest_16.setText(str(response["queue"][16]["Dest"]))
+            self.lbl_criteria_16.setText(''.join(sort_crit[16]))
+            if response["queue"][16]["Name"] == "card":
                 self.pos_16.setEnabled(0)
             else:
                 self.pos_16.setEnabled(1)
 
-            if  response["queue"][17] == "card":
+            self.lbl_dest_17.setText(str(response["queue"][17]["Dest"]))
+            self.lbl_criteria_17.setText(''.join(sort_crit[17]))
+            if  response["queue"][17]["Name"] == "card":
                 self.pos_17.setEnabled(0)
             else:
                 self.pos_17.setEnabled(1)
 
-            if response["queue"][18] == "card":
+            self.lbl_dest_18.setText(str(response["queue"][18]["Dest"]))
+            self.lbl_criteria_18.setText(''.join(sort_crit[18]))
+            if response["queue"][18]["Name"] == "card":
                 self.pos_18.setEnabled(0)
             else:
                 self.pos_18.setEnabled(1)
 
-            if response["queue"][19] == "card":
+            self.lbl_dest_19.setText(str(response["queue"][19]["Dest"]))
+            self.lbl_criteria_19.setText(''.join(sort_crit[19]))
+            if response["queue"][19] ["Name"] == "card":
                 self.pos_19.setEnabled(0)
             else:
                 self.pos_19.setEnabled(1)
 
-            if response["queue"][20] == "card":
+            self.lbl_dest_20.setText(str(response["queue"][20]["Dest"]))
+            self.lbl_criteria_20.setText(''.join(sort_crit[20]))
+            if response["queue"][20]["Name"] == "card":
                 self.pos_20.setEnabled(0)
             else:
                 self.pos_20.setEnabled(1)
 
-            if response["queue"][21] == "card":
+            self.lbl_dest_21.setText(str(response["queue"][21]["Dest"]))
+            self.lbl_criteria_21.setText(''.join(sort_crit[21]))
+            if response["queue"][21]["Name"] == "card":
                 self.pos_21.setEnabled(0)
             else:
                 self.pos_21.setEnabled(1)
 
-            if response["queue"][22] == "card":
+            self.lbl_dest_22.setText(str(response["queue"][22]["Dest"]))
+            self.lbl_criteria_22.setText(''.join(sort_crit[22]))
+            if response["queue"][22]["Name"] == "card":
                 self.pos_22.setEnabled(0)
             else:
                 self.pos_22.setEnabled(1)
 
-            if response["queue"][23] == "card":
+            self.lbl_dest_23.setText(str(response["queue"][23]["Dest"]))
+            self.lbl_criteria_23.setText(''.join(sort_crit[23]))
+            if response["queue"][23]["Name"] == "card":
                 self.pos_23.setEnabled(0)
             else:
                 self.pos_23.setEnabled(1)
 
-            if response["queue"][24] == "card":
+            self.lbl_dest_24.setText(str(response["queue"][24]["Dest"]))
+            self.lbl_criteria_24.setText(''.join(sort_crit[24]))
+            if response["queue"][24]["Name"] == "card":
                 self.pos_24.setEnabled(0)
             else:
                 self.pos_24.setEnabled(1)
 
-            if response["queue"][25] == "card":
+            self.lbl_dest_25.setText(str(response["queue"][25]["Dest"]))
+            self.lbl_criteria_25.setText(''.join(sort_crit[25]))
+            if response["queue"][25]["Name"] == "card":
                 self.pos_25.setEnabled(0)
             else:
                 self.pos_25.setEnabled(1)
 
-            if response["queue"][26] == "card":
+            if response["queue"][26]["Name"] == "card":
                 self.pos_26.setEnabled(0)
             else:
                 self.pos_26.setEnabled(1)
